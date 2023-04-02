@@ -4,6 +4,8 @@ import {
 } from '../../utils/firebase/firebase.utils';
 import './sign-in.styles.scss';
 
+import SingUpForm from '../../components/sing-up-form/sing-up-form.component';
+
 const SignIn = () => {
 
     const logGoogleUser = async () => {
@@ -21,6 +23,7 @@ const SignIn = () => {
             <button onClick={logGoogleUser}>
                 Sing In with google
             </button>
+            <SingUpForm />
         </div>
     )
 };
