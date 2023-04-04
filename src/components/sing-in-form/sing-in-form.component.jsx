@@ -1,12 +1,14 @@
 import { useState } from "react";
+
+import Button from "../button/button.component";
+import FormInput from "../form-input/form-input.component";
+
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 
-import Button from "../button/button.component";
-import FormInput from "../form-input/form-input.component";
 import "./sing-in-form.styles.scss";
 
 const defaultFormFields = {
@@ -23,19 +25,14 @@ const SingInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    try {
-      const { user } = await signInWithGooglePopup();
-      await createUserDocumentFromAuth(user);
-    } catch (error) {
-      console.log(error);
-    }
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
