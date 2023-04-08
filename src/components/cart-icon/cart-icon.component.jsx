@@ -3,7 +3,7 @@ import { CartContext } from "../../contexts/cart.context";
 
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 
-import "./cart-icon.styles.scss";
+import * as S from "./cart-icon.styles";
 
 const useOutsideClick = (callback) => {
   const ref = useRef(null);
@@ -39,10 +39,10 @@ const CartIcon = () => {
   const ref = useOutsideClick(handleClickOutside);
 
   return (
-    <div className="cart-icon-container" ref={ref} onClick={toggleIsCartOpen}>
-      <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">{cartCount}</span>
-    </div>
+    <S.CartIconContainer ref={ref} onClick={toggleIsCartOpen}>
+      <ShoppingIcon />
+      <S.ItemCount>{cartCount}</S.ItemCount>
+    </S.CartIconContainer>
   );
 };
 
